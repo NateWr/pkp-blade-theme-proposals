@@ -43,7 +43,7 @@ class Comments extends Component
 {
     public function __construct() {
         $activeTheme->loadVueCore()
-        $activeTheme->loadVueOpenPeerReview();
+        $activeTheme->loadVueComments();
     }
 }
 ```
