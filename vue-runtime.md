@@ -39,7 +39,7 @@ namespace PKP\view\components;
 use APP\core\Application;
 use Illuminate\View\Component;
 
-class OpenPeerReview extends Component
+class Comments extends Component
 {
     public function __construct() {
         $activeTheme->loadVueCore()
