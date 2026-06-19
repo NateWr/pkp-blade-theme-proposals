@@ -321,10 +321,11 @@ Then a theme could do the following:
 </article>
 ```
 
-Whether or not this is worth it is an open question. Personally, I have found the lack of type-hinting in `.blade` files to be difficult to work with. I think the main benefit of a class component is:
+Whether or not this is worth it is an open question. Personally, I have found the lack of type-hinting in `.blade` files to be difficult to work with. I think the main benefit of class components is:
 
 - Proper type hinting
 - Themers won't have to know OJS internals like primary/supplementary galley types, author ORCID/CRediT logic, etc.
+- We may be able to auto-generate theme documentation from docblocks.
 
 Right now we put these helper functions into the `DataObject`, but I think there is some additional support for templating that doesn't belong there.
 
