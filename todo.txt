@@ -1,0 +1,99 @@
+TODO: 19 June 2026
+
+The following document describes work on the [Eidos](https://github.com/NateWr/Eidos/) theme that remains to be discussed, prioritized, and completed.
+
+This list is compiled against the draft prepared for review on 19 June 2026. To test the draft, you must have:
+
+- [Eidos](https://github.com/NateWr/Eidos/) installed, `main` branch, commit `a2ffe00`.
+- Run the install and build steps for `Eidos` (see readme).
+- The `NateWr/eidos` fork of `ojs`, `pkp-lib`, and `ui-library`.
+- If you want test data, you can use the files in [./dataset](./dataset/). These assume you are running a local install at `localhost:8000`.
+
+
+Core features missing:
+=====
+- Article page:
+  - Full-text
+  - Peer Review
+  - Comments
+  - Metrics
+  - Several metadata components are missing or need more work,
+    including: version history, DOIs for versions, metrics summary,
+    and more.
+  - Menubar needs final decisions and revisions on a11y / design:
+    - see discussion: https://www.figma.com/design/syjJZsOufFSKVTFva3Rr8f?node-id=159-108992#1807204450
+- Homepage: implement the remaining blocks, such as Latest Articles,
+  browse by category, etc.
+    - See all designed blocks here: https://www.figma.com/design/syjJZsOufFSKVTFva3Rr8f/Eidos---PKP-Theme?node-id=103-68622&t=I0M1IIW96QwhLQXN-1
+- Templates for Login/Registration/Forgot Password/Error/Message/subscription
+  - I plan to make these "unthemed" templates, similar to WordPress.
+- Color theme options.
+- Font theme options.
+- Make sure every page supports the #skip-to-main skip link.
+- The pagination template should not show all page links if there are too
+  many.
+
+Design revisions/discussions:
+=====
+- When an article appears in a list (issue table of contents, search, latest
+  articles), show the galleys in the same Downloads dropdown used on the
+  article page.
+- In the issue table of contents, when an issue has a cover but no description,
+  there is a large empty space before the articles. To fix this, I have to adjust
+  the HTML structure of the articles. I think the best solution is to never show
+  article cover images in the table of contents. What do people think about not
+  showing cover images in issue table of contents?
+- Explore design options to visually separate metadata in the article sidebar?
+
+Code refactor or discussions to be done:
+=====
+- The new `MetadataBlocksRegistry` and `HomepageBlocksRegistry` don't yet work
+  for other plugins that need to add their own blocks.
+  - See: https://github.com/NateWr/pkp-blade-theme-proposals/blob/main/theme-plugin-init-order.md
+- Should metadata and homepage block templates be in APP/PKP? Or should I keep
+  them in the theme for now?
+- Where should we put template setup and helper functions?
+  - See: https://github.com/NateWr/pkp-blade-theme-proposals/bulob/main/template-setup-and-helper-functions.md
+- Blade component directory structure
+  - See: https://github.com/NateWr/pkp-blade-theme-proposals/blob/main/template-directory.md
+- Smarty encoded the email addresses to prevent scraping. Should we try to reproduce this
+  in Blade or leave it as-is? (It's just a JS hack and probably not very
+  successful against modern scrapers.)
+- Tailwind won't import @utility definitions if they are only used in a template
+  in OJS/PKP, rather than the theme. I need to refactor the utility CSS to
+  always add them to the build.
+
+Important enhancements and features:
+=====
+- In <x-layout>, rename `description` to `metaDescription` for clarity.
+- Navigation menus need to be migrated to the <Popover> component,
+  because the <NavigationMenu> component doesn't detect when a pop-up
+  extends outside the viewport.
+- The mobile menu should be converted to a <Popover> component for
+  consistency and accessibility.
+- The "institutional header" support for child themes needs to be tested
+  after a fix was applied.
+- Document all core components and helper methods available to themers.
+- Catalog page templates do not receive full category hierarchy, only the
+  immediate parent, so a 3-level category structure can't show breadcrumbs.
+- Catalog: open cover image in a lightbox.
+- Catalog page: implement the menubar for mobile devices.
+- Catalog: add searching.
+- Search: show / hide abstracts.
+- Search: show article section in search results.
+- Search: add the menubar for mobile devices.
+- Announcements: link back to all announcements when viewing one announcement.
+- Article: add share options
+
+Other notes, suggestions, or nice to haves:
+=====
+- When using `LazyCollections` with Blade templates, some properties
+  of the `$loop` variable aren't supported. This may cause confusion for
+  themers so it needs to be documented.
+- I used pagination-custom.blade so I don't overwrite pagination.tpl. Maybe
+  I don't need to do this? If not, just use pagination.blade.
+- When is a good time to align pagination methods across the frontend, so
+  we can use one simple template, instead of all the different URL patterns?
+- Should the CustomBlockPlugin make its blocks available as Homepage Blocks?
+- Instead of $isUserLoggedIn, what about passing a $user object as global
+  template data? Checking would then be done with `@if($user)`.
