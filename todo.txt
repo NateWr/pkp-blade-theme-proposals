@@ -6,7 +6,7 @@ This list is compiled against the draft prepared for review on 19 June 2026. To 
 
 - [Eidos](https://github.com/NateWr/Eidos/) installed, `main` branch, commit `a2ffe00`.
 - Run the install and build steps for `Eidos` (see readme).
-- The `NateWr/eidos` fork of `ojs`, `pkp-lib`, and `ui-library`.
+- The `NateWr/eidos` fork of `ojs`, `pkp-lib`, and `ui-library`. Recompile the frontend UI components for OJS (`npm run build:frontend`).
 - If you want test data, you can use the files in [./dataset](./dataset/). These assume you are running a local install at `localhost:8000`.
 - The main journal with test data is Journal of Public Knowledge.
 
