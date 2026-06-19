@@ -194,7 +194,7 @@ Because `Layout` is called late in the request cycle, it may not be easy to do t
 
 ### Class based components for common templates
 
-In general, I have avoided class-based components in favour of keeping all template logic in the `.blade` templates. This means that theme developers only need to interact with one file.
+In general, I have avoided class-based components in favour of keeping all template logic in the `.blade` templates (see [example](https://github.com/NateWr/pkp-lib/blob/eidos/templates/components/date-select.blade)). This means that theme developers only need to interact with one file.
 
 However, I have begun to wonder if it would be a good idea for PKP to provide class components for some data objects.
 
