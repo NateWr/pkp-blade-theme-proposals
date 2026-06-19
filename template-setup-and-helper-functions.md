@@ -310,7 +310,7 @@ Then a theme could do the following:
 <x-article
     :submission="$submission"
     :publication="$publication"
-    :template="components.my-example-template"
+    template="components.my-example-template"
 />
 ```
 
