@@ -57,9 +57,6 @@ Code refactor or discussions to be done:
   - See: https://github.com/NateWr/pkp-blade-theme-proposals/blob/main/template-setup-and-helper-functions.md
 - Blade component directory structure
   - See: https://github.com/NateWr/pkp-blade-theme-proposals/blob/main/template-directory.md
-- Smarty encoded the email addresses to prevent scraping. Should we try to reproduce this
-  in Blade or leave it as-is? (It's just a JS hack and probably not very
-  successful against modern scrapers.)
 - Tailwind won't import @utility definitions if they are only used in a template
   in OJS/PKP, rather than the theme. I need to refactor the utility CSS to
   always add them to the build.
