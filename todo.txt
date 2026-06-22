@@ -54,7 +54,7 @@ Code refactor or discussions to be done:
 - Should metadata and homepage block templates be in APP/PKP? Or should I keep
   them in the theme for now?
 - Where should we put template setup and helper functions?
-  - See: https://github.com/NateWr/pkp-blade-theme-proposals/bulob/main/template-setup-and-helper-functions.md
+  - See: https://github.com/NateWr/pkp-blade-theme-proposals/blob/main/template-setup-and-helper-functions.md
 - Blade component directory structure
   - See: https://github.com/NateWr/pkp-blade-theme-proposals/blob/main/template-directory.md
 - Smarty encoded the email addresses to prevent scraping. Should we try to reproduce this
